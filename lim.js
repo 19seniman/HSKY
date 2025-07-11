@@ -26,25 +26,6 @@ const colors = {
   blue: "\x1b[34m",
 };
 
-const timeStamp = () => {
-  return `${colors.gray}[${new Date().toLocaleTimeString()}]${colors.reset}`;
-};
-
-const loggerColors = {
-  reset: "\x1b[0m",
-  bright: "\x1b[1m",
-  dim: "\x1b[2m",
-  cyan: "\x1b[36m",
-  green: "\x1b[32m",
-  yellow: "\x1b[33m",
-  red: "\x1b[31m",
-  magenta: "\x1b[35m",
-  gray: "\x1b[90m",
-  blue: "\x1b[34m",
-};
-
-const timeStamp = () => {
-  return `${loggerColors.gray}[${new Date().toLocaleTimeString()}]${loggerColors.reset}`;
 };
 
 const logger = {
