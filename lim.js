@@ -13,54 +13,41 @@ const colors = {
   bold: "\x1b[1m",
 };
 
-const colors = {
+const loggerTheme = {
   reset: "\x1b[0m",
-  bright: "\x1b[1m",
-  dim: "\x1b[2m",
-  cyan: "\x1b[36m",
+  bold: "\x1b[1m",
+  italic: "\x1b[3m",
+  underline: "\x1b[4m",
+  red: "\x1b[31m",
   green: "\x1b[32m",
   yellow: "\x1b[33m",
-  red: "\x1b[31m",
-  magenta: "\x1b[35m",
-  gray: "\x1b[90m",
   blue: "\x1b[34m",
+  magenta: "\x1b[35m",
+  cyan: "\x1b[36m",
+  white: "\x1b[37m",
+  bgGray: "\x1b[100m",
 };
 
+const fancyBox = (title, subtitle) => {
+  console.log(`${loggerTheme.cyan}${loggerTheme.bold}`);
+  console.log('╔══════════════════════════════════════════════╗');
+  console.log(`║  ${title.padEnd(42)}  ║`);
+  if (subtitle) {
+    console.log(`║  ${subtitle.padEnd(42)}  ║`);
+  }
+  console.log('╚══════════════════════════════════════════════╝');
+  console.log(loggerTheme.reset);
 };
 
 const logger = {
-  info: (msg) => console.log(`${timeStamp()} ${loggerColors.blue}[ℹ INFO]${loggerColors.reset} ${msg}`),
-  warn: (msg) => console.log(`${timeStamp()} ${loggerColors.yellow}[❗ WARNING]${loggerColors.reset} ${msg}`),
-  error: (msg) => console.log(`${timeStamp()} ${loggerColors.red}[⛔ ERROR]${loggerColors.reset} ${msg}`),
-  success: (msg) => console.log(`${timeStamp()} ${loggerColors.green}[🎉 SUCCESS]${loggerColors.reset} ${msg}`),
-  loading: (msg) => console.log(`${timeStamp()} ${loggerColors.cyan}[⏳ LOADING]${loggerColors.reset} ${msg}`),
-  step: (msg) => console.log(`${timeStamp()} ${loggerColors.magenta}[➡ STEP]${loggerColors.reset} ${msg}`),
-  banner: () => {
-    const line = '╔══════════════════════════════════════════════╗';
-    const title = '║     🚀 Project Logger - Hashkey Bot         ║';
-    const bottom = '╚══════════════════════════════════════════════╝';
-    console.log(`${loggerColors.cyan}${loggerColors.bright}`);
-    console.log(line);
-    console.log(title);
-    console.log(bottom + loggerColors.reset + '\n');
-  },
+  info: (msg) => console.log(`${loggerTheme.blue}[ ℹ INFO ] → ${msg}${loggerTheme.reset}`),
+  warn: (msg) => console.log(`${loggerTheme.yellow}[ ⚠ WARNING ] → ${msg}${loggerTheme.reset}`),
+  error: (msg) => console.log(`${loggerTheme.red}[ ✖ ERROR ] → ${msg}${loggerTheme.reset}`),
+  success: (msg) => console.log(`${loggerTheme.green}[ ✔ DONE ] → ${msg}${loggerTheme.reset}`),
+  loading: (msg) => console.log(`${loggerTheme.cyan}[ ⌛ LOADING ] → ${msg}${loggerTheme.reset}`),
+  step: (msg) => console.log(`${loggerTheme.magenta}[ ➔ STEP ] → ${msg}${loggerTheme.reset}`),
+  banner: () => fancyBox('🚀 Hashkey Terminal Logger', '— Airdrop Tracker —'),
 };
-
-// Contoh penggunaan
-logger.banner();
-logger.info("Memulai proses inisialisasi...");
-logger.step("Mengambil data dari testnet...");
-logger.loading("Menunggu balasan dari server...");
-logger.success("Data berhasil diproses!");
-logger.warn("Beberapa akun tidak memenuhi syarat.");
-logger.error("Terjadi kesalahan saat verifikasi.");
-
-// Contoh penggunaan:
-logger.banner();
-logger.success("Bot berhasil dijalankan");
-logger.warn("Gas fee cukup tinggi, hati-hati!");
-logger.step("Mengambil data airdrop...");
-
 
 const RPC_URL = "https://testnet.hsk.xyz/";
 const EXPLORER_URL = "https://testnet-explorer.hsk.xyz/";
