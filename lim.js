@@ -48,6 +48,7 @@ const logger = {
   step: (msg) => console.log(`${loggerTheme.magenta}[ ➔ STEP ] → ${msg}${loggerTheme.reset}`),
   banner: () => fancyBox(' 🍉🍉Free Plestine 🍉🍉', '— 19Seniman From Insider 🏴‍☠️ —'),
 };
+
 const RPC_URL = "https://testnet.hsk.xyz/";
 const EXPLORER_URL = "https://testnet-explorer.hsk.xyz/";
 const FAUCET_URL = "https://beeperp-server-production.up.railway.app/api/v1/marketings/claimTestCoin/";
