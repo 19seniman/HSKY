@@ -30,23 +30,49 @@ const timeStamp = () => {
   return `${colors.gray}[${new Date().toLocaleTimeString()}]${colors.reset}`;
 };
 
+const loggerColors = {
+  reset: "\x1b[0m",
+  bright: "\x1b[1m",
+  dim: "\x1b[2m",
+  cyan: "\x1b[36m",
+  green: "\x1b[32m",
+  yellow: "\x1b[33m",
+  red: "\x1b[31m",
+  magenta: "\x1b[35m",
+  gray: "\x1b[90m",
+  blue: "\x1b[34m",
+};
+
+const timeStamp = () => {
+  return `${loggerColors.gray}[${new Date().toLocaleTimeString()}]${loggerColors.reset}`;
+};
+
 const logger = {
-  info: (msg) => console.log(`${timeStamp()} ${colors.blue}[ℹ INFO]${colors.reset} ${msg}`),
-  warn: (msg) => console.log(`${timeStamp()} ${colors.yellow}[❗ WARNING]${colors.reset} ${msg}`),
-  error: (msg) => console.log(`${timeStamp()} ${colors.red}[⛔ ERROR]${colors.reset} ${msg}`),
-  success: (msg) => console.log(`${timeStamp()} ${colors.green}[🎉 SUCCESS]${colors.reset} ${msg}`),
-  loading: (msg) => console.log(`${timeStamp()} ${colors.cyan}[⏳ LOADING]${colors.reset} ${msg}`),
-  step: (msg) => console.log(`${timeStamp()} ${colors.magenta}[➡ STEP]${colors.reset} ${msg}`),
+  info: (msg) => console.log(`${timeStamp()} ${loggerColors.blue}[ℹ INFO]${loggerColors.reset} ${msg}`),
+  warn: (msg) => console.log(`${timeStamp()} ${loggerColors.yellow}[❗ WARNING]${loggerColors.reset} ${msg}`),
+  error: (msg) => console.log(`${timeStamp()} ${loggerColors.red}[⛔ ERROR]${loggerColors.reset} ${msg}`),
+  success: (msg) => console.log(`${timeStamp()} ${loggerColors.green}[🎉 SUCCESS]${loggerColors.reset} ${msg}`),
+  loading: (msg) => console.log(`${timeStamp()} ${loggerColors.cyan}[⏳ LOADING]${loggerColors.reset} ${msg}`),
+  step: (msg) => console.log(`${timeStamp()} ${loggerColors.magenta}[➡ STEP]${loggerColors.reset} ${msg}`),
   banner: () => {
     const line = '╔══════════════════════════════════════════════╗';
-    const title = '║  🏴‍☠️ 🍉🍉 19Seniman From Insider  🍉🍉 🏴‍☠ ║';
+    const title = '║     🚀 Project Logger - Hashkey Bot         ║';
     const bottom = '╚══════════════════════════════════════════════╝';
-    console.log(`${colors.cyan}${colors.bright}`);
+    console.log(`${loggerColors.cyan}${loggerColors.bright}`);
     console.log(line);
     console.log(title);
-    console.log(bottom + colors.reset + '\n');
+    console.log(bottom + loggerColors.reset + '\n');
   },
 };
+
+// Contoh penggunaan
+logger.banner();
+logger.info("Memulai proses inisialisasi...");
+logger.step("Mengambil data dari testnet...");
+logger.loading("Menunggu balasan dari server...");
+logger.success("Data berhasil diproses!");
+logger.warn("Beberapa akun tidak memenuhi syarat.");
+logger.error("Terjadi kesalahan saat verifikasi.");
 
 // Contoh penggunaan:
 logger.banner();
