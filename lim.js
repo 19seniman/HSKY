@@ -13,41 +13,30 @@ const colors = {
   bold: "\x1b[1m",
 };
 
-const loggerTheme = {
+const cyberColors = {
   reset: "\x1b[0m",
   bold: "\x1b[1m",
-  italic: "\x1b[3m",
-  underline: "\x1b[4m",
-  red: "\x1b[31m",
+  dim: "\x1b[2m",
   green: "\x1b[32m",
-  yellow: "\x1b[33m",
-  blue: "\x1b[34m",
-  magenta: "\x1b[35m",
-  cyan: "\x1b[36m",
-  white: "\x1b[37m",
-  bgGray: "\x1b[100m",
+  gray: "\x1b[90m",
+  blackBG: "\x1b[40m",
 };
 
-const fancyBox = (title, subtitle) => {
-  console.log(`${loggerTheme.cyan}${loggerTheme.bold}`);
-  console.log('╔══════════════════════════════════════════════╗');
-  console.log(`║  ${title.padEnd(42)}  ║`);
-  if (subtitle) {
-    console.log(`║  ${subtitle.padEnd(42)}  ║`);
-  }
-  console.log('╚══════════════════════════════════════════════╝');
-  console.log(loggerTheme.reset);
+const cyberLogger = {
+  info: (msg) => console.log(`${cyberColors.gray}[INFO] ${msg}${cyberColors.reset}`),
+  warn: (msg) => console.log(`${cyberColors.bold}${cyberColors.green}[! WARNING] ${msg}${cyberColors.reset}`),
+  error: (msg) => console.log(`${cyberColors.green}[X ERROR] ${msg}${cyberColors.reset}`),
+  success: (msg) => console.log(`${cyberColors.green}[✓ SUCCESS] ${msg}${cyberColors.reset}`),
+  step: (msg) => console.log(`${cyberColors.dim}[» STEP] ${msg}${cyberColors.reset}`),
+  banner: () => {
+    console.log(`${cyberColors.blackBG}${cyberColors.green}`);
+    console.log('┌──────────────────────────────────────────┐');
+    console.log('│       Dark Cyber Tracker Initialized     │');
+    console.log('└──────────────────────────────────────────┘');
+    console.log(cyberColors.reset);
+  },
 };
 
-const logger = {
-  info: (msg) => console.log(`${loggerTheme.blue}[ ℹ INFO ] → ${msg}${loggerTheme.reset}`),
-  warn: (msg) => console.log(`${loggerTheme.yellow}[ ⚠ WARNING ] → ${msg}${loggerTheme.reset}`),
-  error: (msg) => console.log(`${loggerTheme.red}[ ✖ ERROR ] → ${msg}${loggerTheme.reset}`),
-  success: (msg) => console.log(`${loggerTheme.green}[ ✔ DONE ] → ${msg}${loggerTheme.reset}`),
-  loading: (msg) => console.log(`${loggerTheme.cyan}[ ⌛ LOADING ] → ${msg}${loggerTheme.reset}`),
-  step: (msg) => console.log(`${loggerTheme.magenta}[ ➔ STEP ] → ${msg}${loggerTheme.reset}`),
-  banner: () => fancyBox('🚀 Hashkey Terminal Logger', '— Airdrop Tracker —'),
-};
 
 const RPC_URL = "https://testnet.hsk.xyz/";
 const EXPLORER_URL = "https://testnet-explorer.hsk.xyz/";
