@@ -13,6 +13,48 @@ const colors = {
   bold: "\x1b[1m",
 };
 
+const colors = {
+  reset: "\x1b[0m",
+  bright: "\x1b[1m",
+  dim: "\x1b[2m",
+  cyan: "\x1b[36m",
+  green: "\x1b[32m",
+  yellow: "\x1b[33m",
+  red: "\x1b[31m",
+  magenta: "\x1b[35m",
+  gray: "\x1b[90m",
+  blue: "\x1b[34m",
+};
+
+const timeStamp = () => {
+  return `${colors.gray}[${new Date().toLocaleTimeString()}]${colors.reset}`;
+};
+
+const logger = {
+  info: (msg) => console.log(`${timeStamp()} ${colors.blue}[ℹ INFO]${colors.reset} ${msg}`),
+  warn: (msg) => console.log(`${timeStamp()} ${colors.yellow}[❗ WARNING]${colors.reset} ${msg}`),
+  error: (msg) => console.log(`${timeStamp()} ${colors.red}[⛔ ERROR]${colors.reset} ${msg}`),
+  success: (msg) => console.log(`${timeStamp()} ${colors.green}[🎉 SUCCESS]${colors.reset} ${msg}`),
+  loading: (msg) => console.log(`${timeStamp()} ${colors.cyan}[⏳ LOADING]${colors.reset} ${msg}`),
+  step: (msg) => console.log(`${timeStamp()} ${colors.magenta}[➡ STEP]${colors.reset} ${msg}`),
+  banner: () => {
+    const line = '╔══════════════════════════════════════════════╗';
+    const title = '║  🏴‍☠️ 🍉🍉 19Seniman From Insider  🍉🍉 🏴‍☠ ║';
+    const bottom = '╚══════════════════════════════════════════════╝';
+    console.log(`${colors.cyan}${colors.bright}`);
+    console.log(line);
+    console.log(title);
+    console.log(bottom + colors.reset + '\n');
+  },
+};
+
+// Contoh penggunaan:
+logger.banner();
+logger.success("Bot berhasil dijalankan");
+logger.warn("Gas fee cukup tinggi, hati-hati!");
+logger.step("Mengambil data airdrop...");
+
+
 const RPC_URL = "https://testnet.hsk.xyz/";
 const EXPLORER_URL = "https://testnet-explorer.hsk.xyz/";
 const FAUCET_URL = "https://beeperp-server-production.up.railway.app/api/v1/marketings/claimTestCoin/";
