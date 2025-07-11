@@ -46,7 +46,7 @@ const logger = {
   success: (msg) => console.log(`${loggerTheme.green}[ ✔ DONE ] → ${msg}${loggerTheme.reset}`),
   loading: (msg) => console.log(`${loggerTheme.cyan}[ ⌛ LOADING ] → ${msg}${loggerTheme.reset}`),
   step: (msg) => console.log(`${loggerTheme.magenta}[ ➔ STEP ] → ${msg}${loggerTheme.reset}`),
-  banner: () => fancyBox('🚀 Hashkey Terminal Logger', '— Airdrop Tracker —'),
+  banner: () => fancyBox(' 🍉🍉Free Plestine 🍉🍉', '— 19Seniman From Insider 🏴‍☠️ —'),
 };
 const RPC_URL = "https://testnet.hsk.xyz/";
 const EXPLORER_URL = "https://testnet-explorer.hsk.xyz/";
