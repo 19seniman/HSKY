@@ -1,10 +1,10 @@
 ## INSTALLATION
 
 ```
-git clone
+git clone https://github.com/19seniman/HSKY.git
 ```
 ```
-cd
+cd HSKY
 ```
 ```
 npm install
