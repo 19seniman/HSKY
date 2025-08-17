@@ -9,7 +9,7 @@ cd HSKY
 ```
 npm init -y
 npm install dotenv axios ws uuid https-proxy-agent random-useragent
-npm install
+npm install ethers
 ```
 ```
 nano .env
